@@ -17,7 +17,8 @@
         "src/Block.js",
         "src/ResultLayer.js",
         "src/CCNotificationCenter.js",
-        "src/playMatch.js"
+        "src/playMatch.js",
+        "src/socket.js"
 
     ]
 }

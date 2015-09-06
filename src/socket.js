@@ -39,7 +39,10 @@ var WebSocketTestLayer = cc.Layer.extend({
     
     _sendTextTimes: 0,
     _sendBinaryTimes: 0,
-
+    ctor:function(){
+        this._super();
+        this.init();
+    },
     init: function () {
 
         var winSize = cc.director.getWinSize();
@@ -107,7 +110,7 @@ var WebSocketTestLayer = cc.Layer.extend({
 
         var self = this;
 
-        this._wsiSendText = new WebSocket("ws:192.168.1.50:8010");
+        this._wsiSendText = new WebSocket("ws://192.168.1.50:12345");
         this._wsiSendText.onopen = function(evt) {
             self._sendTextStatus.setString("Send Text WS was opened.");
         };
@@ -115,22 +118,22 @@ var WebSocketTestLayer = cc.Layer.extend({
         this._wsiSendText.onmessage = function(evt) {
             self._sendTextTimes++;
             var textStr = "response text msg: "+evt.data+", "+self._sendTextTimes;
-            cc.log(textStr);
+            console.log(textStr);
             
             self._sendTextStatus.setString(textStr);
         };
 
         this._wsiSendText.onerror = function(evt) {
-            cc.log("sendText Error was fired");
+            console.log("sendText Error was fired");
         };
 
         this._wsiSendText.onclose = function(evt) {
-            cc.log("_wsiSendText websocket instance closed.");
+            console.log("_wsiSendText websocket instance closed.");
             self._wsiSendText = null;
         };
 
 
-        this._wsiSendBinary = new WebSocket("ws:192.168.1.50:8010");
+        this._wsiSendBinary = new WebSocket("ws://192.168.1.50:12345");
         this._wsiSendBinary.binaryType = "arraybuffer";
         this._wsiSendBinary.onopen = function(evt) {
             self._sendBinaryStatus.setString("Send Binary WS was opened.");
@@ -155,28 +158,28 @@ var WebSocketTestLayer = cc.Layer.extend({
             }
 
             binaryStr += str + ", " + self._sendBinaryTimes;
-            cc.log(binaryStr);
+            console.log(binaryStr);
             self._sendBinaryStatus.setString(binaryStr);
         };
 
         this._wsiSendBinary.onerror = function(evt) {
-            cc.log("sendBinary Error was fired");
+            console.log("sendBinary Error was fired");
         };
 
         this._wsiSendBinary.onclose = function(evt) {
-            cc.log("_wsiSendBinary websocket instance closed.");
+            console.log("_wsiSendBinary websocket instance closed.");
             self._wsiSendBinary = null;
         };
 
-        this._wsiError = new WebSocket("ws:192.168.1.50:8010");
+        this._wsiError = new WebSocket("ws://192.168.1.50:12345");
         this._wsiError.onopen = function(evt) {};
         this._wsiError.onmessage = function(evt) {};
         this._wsiError.onerror = function(evt) {
-            cc.log("Error was fired");
+            console.log("Error was fired");
             self._errorStatus.setString("an error was fired");
         };
         this._wsiError.onclose = function(evt) {
-            cc.log("_wsiError websocket instance closed.");
+            console.log("_wsiError websocket instance closed.");
             self._wsiError = null;
         };
 
@@ -206,7 +209,7 @@ var WebSocketTestLayer = cc.Layer.extend({
         else
         {
             var warningStr = "send text websocket instance wasn't ready...";
-            cc.log(warningStr);
+            console.log(warningStr);
             this._sendTextStatus.setString(warningStr);
         }
     },
@@ -236,7 +239,7 @@ var WebSocketTestLayer = cc.Layer.extend({
         else
         {
             var warningStr = "send binary websocket instance wasn't ready...";
-            cc.log(warningStr);
+            console.log(warningStr);
             this._sendBinaryStatus.setString(warningStr);
         }
     },
@@ -256,9 +259,16 @@ WebSocketTestLayer.create = function () {
 };
 
 
-var runWebSocketTest = function () {
-    var pScene = new cc.Scene();
-    var pLayer = WebSocketTestLayer.create();
-    pScene.addChild(pLayer);
-    cc.director.runScene(pScene);
-};
+// var runWebSocketTest = function () {
+//     var pScene = new cc.Scene();
+//     var pLayer = WebSocketTestLayer.create();
+//     pScene.addChild(pLayer);
+//     cc.director.runScene(pScene);
+// };
+
+var runWebSocketTest = cc.Scene.extend({
+    onEnter : function(){
+        this._super();
+        this.addChild(new WebSocketTestLayer());
+    }
+})
