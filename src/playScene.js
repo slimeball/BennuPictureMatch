@@ -45,7 +45,7 @@ var playLayer = cc.Layer.extend({
 		//设置总块数
 		this.numOfBlocks = this.n_MatrixCol * this.n_MatrixRow;
 		//设置游戏最大时间
-		this.timeTotal = 11150;
+		this.timeTotal = 50;
 		//设置背景图
 		var bgSprite = cc.Sprite.create(res.bg);
 		bgSprite.setPosition(cc.p(winSize.width / 2, winSize.height / 2));
@@ -135,8 +135,8 @@ var playLayer = cc.Layer.extend({
 		for(var row = 0 ; row < this.n_MatrixRow ; row ++){
 			for(var col = 0 ; col < this.n_MatrixCol ; col ++){
 				this.blocksPos[row][col] = cc.p(baseX + col * space, baseY + row * space);
-				// bg.setPosition(this.blocksPos[row][col]);
-				// bg.visit();
+				//bg.setPosition(this.blocksPos[row][col]);
+				//bg.visit();
 
 				//Randomly choose the block in tempMatrix
 				var randomNumber = 0 | Math.random() * tempMatrix_length;
