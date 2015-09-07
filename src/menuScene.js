@@ -13,12 +13,14 @@ var menuLayer = cc.Layer.extend({
 		bgSprite.setPosition(cc.p(winSize.width / 2, winSize.height / 2));
 		this.addChild(bgSprite);
 
-		//Logo
-		var logoSprite = cc.LabelTTF.create('Pic Match', 'Comic Sans MS', 60);
-		logoSprite.setPosition(cc.p(winSize.width / 2, winSize.height * 2 / 3));
+		//标题logo位置
+		var logoSprite = cc.LabelTTF.create('Pic Match', 'Comic Sans MS', 30);
+		var cnlogoSprite = cc.LabelTTF.create('贝努连连看', 'Comic Sans MS', 40);
+		logoSprite.setPosition(cc.p(winSize.width / 2, winSize.height/2));
+		cnlogoSprite.setPosition(cc.p(winSize.width / 2, winSize.height * 2 / 3));
 		this.addChild(logoSprite);
-
-		//Start button
+		this.addChild(cnlogoSprite);
+		//开始按钮
 		var startGameButton = cc.MenuItemImage.create('res/btn/btnStartGameNor.png', 'res/btn/btnStartGameDown.png', this.menuCallback, this);
 		var menu = cc.Menu.create(startGameButton);
 		menu.setPosition(cc.p(winSize.width / 2, winSize.height  / 3));
