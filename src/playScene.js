@@ -131,12 +131,12 @@ var playLayer = cc.Layer.extend({
         }
 
 		this.patternBg.begin();
-        //var bg = cc.Sprite.create("res/PatternBg.png");
+        // var bg = cc.Sprite.create("res/PatternBg.png");
 		for(var row = 0 ; row < this.n_MatrixRow ; row ++){
 			for(var col = 0 ; col < this.n_MatrixCol ; col ++){
 				this.blocksPos[row][col] = cc.p(baseX + col * space, baseY + row * space);
-				//bg.setPosition(this.blocksPos[row][col]);
-				//bg.visit();
+				// bg.setPosition(this.blocksPos[row][col]);
+				// bg.visit();
 
 				//Randomly choose the block in tempMatrix
 				var randomNumber = 0 | Math.random() * tempMatrix_length;
@@ -244,7 +244,8 @@ var playLayer = cc.Layer.extend({
 		else{
 			cc.log('Game fail.');
 		}
-		cc.director.runScene(new resultLayer());
+		var resultLayer = new ResultLayer(this.gameScore);
+		cc.director.getRunningScene().addChild(resultLayer);
 	}
 })
 

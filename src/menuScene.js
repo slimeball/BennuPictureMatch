@@ -27,7 +27,9 @@ var menuLayer = cc.Layer.extend({
 		return true;
 	},
 	menuCallback : function(){
-		cc.director.runScene(new runWebSocketTest());
+		//websocket测试
+		//cc.director.runScene(new runWebSocketTest());
+		cc.director.runScene(new PlayScene());
 	}
 });
 

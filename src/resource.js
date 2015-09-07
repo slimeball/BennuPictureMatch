@@ -6,7 +6,8 @@ var res = {
     base_r : "res/baseResource.png",
     pat_bg : "res/PatternBg.png",
     baseResource_plist : "res/baseResource.plist",
-    baseResource_png : "res/baseResource.png"
+    baseResource_png : "res/baseResource.png",
+    restar : "res/star.png"
 };
 
 var g_resources = [];
