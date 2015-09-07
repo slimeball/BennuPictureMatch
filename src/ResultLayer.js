@@ -29,7 +29,7 @@ var ResultLayer = cc.Layer.extend({
 	},
 
 	showStar:function(index){
-		var star = cc.Sprite.create('resultLayer/star.png');
+		var star = cc.Sprite.create(res.restar);
 		star.setScale(0.1);
 
 		switch(index){
@@ -51,10 +51,3 @@ var ResultLayer = cc.Layer.extend({
 		star.runAction(cc.RotateBy.create(0.7,720.0));
 	},
 });
-
-var resultLayer = cc.Scene.extend({
-	onEnter : function(){
-		this._super();
-		this.addChild(new ResultLayer());
-	}
-})
