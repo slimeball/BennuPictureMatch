@@ -14,8 +14,8 @@ var menuLayer = cc.Layer.extend({
 		this.addChild(bgSprite);
 
 		//标题logo位置
-		var logoSprite = cc.LabelTTF.create('Pic Match', 'Comic Sans MS', 30);
-		var cnlogoSprite = cc.LabelTTF.create('看看都是谁', 'Comic Sans MS', 40);
+		var logoSprite = cc.LabelTTF.create('一起來吧！', 'Comic Sans MS', 30);
+		var cnlogoSprite = cc.LabelTTF.create('看看都是誰', 'Comic Sans MS', 40);
 		logoSprite.setPosition(cc.p(winSize.width / 2, winSize.height/2));
 		cnlogoSprite.setPosition(cc.p(winSize.width / 2, winSize.height * 2 / 3));
 		this.addChild(logoSprite);
