@@ -15,7 +15,7 @@ var menuLayer = cc.Layer.extend({
 
 		//标题logo位置
 		var logoSprite = cc.LabelTTF.create('Pic Match', 'Comic Sans MS', 30);
-		var cnlogoSprite = cc.LabelTTF.create('贝努连连看', 'Comic Sans MS', 40);
+		var cnlogoSprite = cc.LabelTTF.create('看看都是谁', 'Comic Sans MS', 40);
 		logoSprite.setPosition(cc.p(winSize.width / 2, winSize.height/2));
 		cnlogoSprite.setPosition(cc.p(winSize.width / 2, winSize.height * 2 / 3));
 		this.addChild(logoSprite);
